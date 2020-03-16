@@ -15,6 +15,5 @@ Tested runing on local server (XAMPP).
 1. Id token will be loaded. You can use GET (force new) button to force new id token.
 
 ## Screenshoot
-![index.html page](https://github.com/suryavip/firebaseIdTokenGenerator/screenshoot/index.png)
-
-![signedin.html page](https://github.com/suryavip/firebaseIdTokenGenerator/screenshoot/signedin.png)
+<img src="https://github.com/suryavip/firebaseIdTokenGenerator/raw/master/screenshoot/index.png" alt="index.html page" height="500"/>
+<img src="https://github.com/suryavip/firebaseIdTokenGenerator/raw/master/screenshoot/signedin.png" alt="signedin.html page" height="500"/>
