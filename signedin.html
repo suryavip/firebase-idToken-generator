@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Firebase ID Token Generator</title>
+
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		#idToken {
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+
+	<button onclick="getIdToken()">GET</button>
+	<button onclick="getIdToken(true)">GET (force new)</button>
+	<button onclick="copy()">Copy</button>
+	<button onclick="firebase.auth().signOut()">Sign Out</button>
+	<textarea id="idToken" rows="10" readonly onclick="this.select()">please wait...</textarea>
+
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+	<script src="firebaseConfig.js"></script>
+
+	<script>
+		firebase.initializeApp(firebaseConfig);
+
+		firebase.auth().onAuthStateChanged(async user => {
+			if (user) getIdToken();
+			else window.location = 'index.html';
+		});
+
+		async function getIdToken(forceNew) {
+			document.getElementById('idToken').textContent = 'please wait...';
+			var idToken = await firebase.auth().currentUser.getIdToken(forceNew);
+			document.getElementById('idToken').textContent = idToken;
+		}
+
+		function copy() {
+			document.getElementById('idToken').select();
+			document.execCommand("copy");
+			alert('copied to clipboard');
+		}
+
+	</script>
+
+</body>
+
+</html>
